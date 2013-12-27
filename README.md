@@ -40,7 +40,9 @@ Wait, did I just package a Perl scraper with a Python validity checker? Yes, yes
 
 This is reasonably fast, compared to the scraping process, because it's only using your own post-Clinton-era hardware.
 
-0-byte files should already be purged. Our files seemed to have a fairly consistent format with headlines. If the file is too short for all of the metadata kinda stuff, it gets purged. If the file doesn't open with *&lt;HEAD&gt;*, it gets purged. If the penultimate -- second-to-last -- line isn't *&lt;/HEAD&gt;*, it gets purged. In my files, the final line was always a blank.
+0-byte files should already be purged. Our files seemed to have a fairly consistent format with headlines. If the file is too short for all of the metadata kinda stuff, it gets removed. If the file doesn't open with *&lt;HEAD&gt;*, it gets removed. If the penultimate -- second-to-last -- line isn't *&lt;/HEAD&gt;*, it gets removed. In my files, the final line was always a blank.
+
+Removed files go to the /broken folder, named for the year.
 
 It also reports back in a nice format that's easily imported into a spreadsheet so you can try to figure out later what's going wrong, with periodic updates that would then have to be deleted from your spreadsheet.
 

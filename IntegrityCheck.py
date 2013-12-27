@@ -3,7 +3,7 @@ import os
 
 print "Searching for files ..."
 counterprocessed = 0
-counterdeleted = 0
+counterbad = 0
 countergood = 0
 counterupdate = 10000
 localfiles = glob.glob("./*/*.html")
@@ -15,10 +15,10 @@ for localfile in localfiles:
 #	print localfile 
 	lines = a.readlines()
 	if (len(lines) < 10):
-		print localfile + "\ttoo short\tdeleted"
+		print localfile + "\ttoo short"
 		a.close()
-		os.remove(localfile)
-		counterdeleted += 1
+		os.rename(localfile, "broken" + localfile)
+		counterbad += 1
 	else:
 		if (lines[0].strip() == "<HTML>"):
 			if (lines[-2].strip() == "</HTML>"):
@@ -27,18 +27,18 @@ for localfile in localfiles:
 				a.close()
 				pass
 			else:
-				print localfile + "\tbroken tail\tdeleted"
+				print localfile + "\tbroken tail"
 				a.close()
-				os.remove(localfile)
-				counterdeleted += 1
+				os.rename(localfile, "broken" + localfile)
+				counterbad += 1
 		else:
-			print localfile + "\tbroken top\tdeleted"
+			print localfile + "\tbroken top"
 			a.close()
-			os.remove(localfile)
-			counterdeleted += 1
+			os.rename(localfile, "broken" + localfile)
+			counterbad += 1
 		
 print "\n"
 print "\n"
 print str(counterprocessed) + "\tfiles processed."
 print str(countergood) + "\tfiles are good."
-print str(counterdeleted) + "\tfiles were deleted."
+print str(counterbad) + "\tfiles were moved to the 'broken' folder."
