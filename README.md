@@ -30,7 +30,7 @@ z.bat
 ---------
 
 This simply calls up a stack of parallel requests in Windows. In Unix, you'd want something like
-*scrapeany.pl 1994 & scrapeany.pl 1995 & scrapeany.pl & 1996*
+*scrapeany.pl 1994 & scrapeany.pl 1995 & scrapeany.pl 1996 &*
 
 
 IntegrityCheck.py
